@@ -56,7 +56,7 @@ jobs:
           curl -f http://localhost:8080 || exit 1
 
           echo "Validating content..."
-          curl http://localhost:8080 | grep "Hello" || exit 1
+          curl http://localhost:8080 | grep "Sahil DevOps Demo" || exit 1
 
           docker rm -f test-container
 
