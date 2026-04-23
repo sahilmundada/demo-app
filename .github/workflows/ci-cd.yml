@@ -49,14 +49,14 @@ jobs:
 
           docker run -d -p 8080:80 --name test-container devops-demo
 
-          echo "Waiting for container to start..."
+          echo "Waiting for container..."
           sleep 10
 
           echo "Checking response..."
-          curl -v http://localhost:8080
+          curl -f http://localhost:8080 || exit 1
 
           echo "Validating content..."
-          curl http://localhost:8080 | grep "Hello"
+          curl http://localhost:8080 | grep "Hello" || exit 1
 
           docker rm -f test-container
 
@@ -79,17 +79,32 @@ jobs:
 
             echo "Connected to EC2"
 
+            # Install dependencies
+            sudo yum update -y
+            sudo yum install -y git docker
+
+            # Start Docker
+            sudo systemctl start docker
+            sudo systemctl enable docker
+
+            # Give permission to ec2-user
+            sudo usermod -aG docker ec2-user
+
             cd /home/ec2-user
 
+            # Remove old repo
             rm -rf demo-app
 
             echo "Cloning repo..."
-            GIT_ASKPASS=true git clone https://github.com/rajatdevops1/demo-app.git
+            git clone https://github.com/rajatdevops1/demo-app.git
 
             cd demo-app
 
             echo "Stopping old container..."
             sudo docker rm -f nginx-container || true
+
+            echo "Removing old image..."
+            sudo docker rmi nginx-devops-demo || true
 
             echo "Building new image..."
             sudo docker build -t nginx-devops-demo .
@@ -97,4 +112,5 @@ jobs:
             echo "Starting new container..."
             sudo docker run -d -p 80:80 --name nginx-container nginx-devops-demo
 
+            echo "Deployment successful!"
             sudo docker ps -a
