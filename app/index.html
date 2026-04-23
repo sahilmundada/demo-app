@@ -3,44 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sahil's DevOps App 🚀</title>
+    <title>Sahil DevOps | Static Site</title>
 
     <style>
-        body {
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        }
+
+        body {
+            background: #0f172a;
+            color: #e2e8f0;
+        }
+
+        header {
+            background: #1e293b;
+            padding: 20px;
             text-align: center;
         }
 
-        .container {
-            background: rgba(0, 0, 0, 0.4);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        header h1 {
+            color: #38bdf8;
         }
 
-        h1 {
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: #cbd5f5;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: #38bdf8;
+        }
+
+        .hero {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h2 {
             font-size: 2.5rem;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
-        p {
+        .hero p {
             font-size: 1.2rem;
-            opacity: 0.9;
+            opacity: 0.8;
         }
 
-        .badge {
+        .btn {
             margin-top: 20px;
             display: inline-block;
-            padding: 8px 15px;
-            background: #00c9a7;
+            padding: 10px 20px;
+            background: #38bdf8;
             color: black;
-            border-radius: 20px;
+            border-radius: 5px;
+            text-decoration: none;
             font-weight: bold;
         }
+
+        .section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 10px;
+            width: 250px;
+        }
+
+        footer {
+            background: #1e293b;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🚀 Sahil DevOps Demo</h1>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Services</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h2>Deployed via CI/CD Pipeline</h2>
+    <p>This is a fully static website hosted on EC2 using Docker & Nginx</p>
+    <a class="btn" href="#">View Project</a>
+</section>
+
+<section class="section">
+    <h2>⚙️ Services</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>CI/CD</h3>
+            <p>Automated deployments using GitHub Actions</p>
+        </div>
+        <div class="card">
+            <h3>Docker</h3>
+            <p>Containerized application for consistency</p>
+        </div>
+        <div class="card">
+            <h3>AWS EC2</h3>
+            <p>Cloud hosting with scalable infrastructure</p>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>📊 Status</h2>
+    <p>✔ Deployment Successful</p>
+    <p>✔ Server Running</p>
+    <p>✔ Pipeline Active</p>
+</section>
+
+<footer>
+    <p>© 2026 Sahil Mundada | DevOps Project</p>
+</footer>
+
+</body>
+</html>
