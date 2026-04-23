@@ -16,8 +16,8 @@ jobs:
 
       - name: 🔨 Build Docker Image
         run: |
-        echo "Building Docker image..."
-        docker build -t devops-demo .
+          echo "Building Docker image..."
+          docker build -t devops-demo .
 
       - name: 📦 Save Docker Image
         run: docker save devops-demo -o devops-demo.tar
